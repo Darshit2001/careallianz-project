@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
+import { v4 as uuid } from "uuid";
+import AddTask from "./Component/AddTask";
+import TaskList from "./Component/TaskList";
+import NavbarAll from "./Component/Header";
+import styled from "styled-components";
+
+const MainComponent = styled.div`
+  background-color: antiquewhite;
+  height: 100vh;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <MainComponent>
+        <NavbarAll />
+        <Routes>
+          <Route exact path="/" element={<AddTask />} />
+          <Route exact path="/TaskList" element={<TaskList />} />
+        </Routes>
+      </MainComponent>
+    </>
   );
 }
 
